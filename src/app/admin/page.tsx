@@ -32,10 +32,8 @@ export default async function AdminDashboard() {
       where: { status: "confirmed" },
       _sum: { amount: true },
     }),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ("eventEnquiry" in prisma ? (prisma as any).eventEnquiry.count({ where: { status: "new" } }) : Promise.resolve(0)),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ("contactSubmission" in prisma ? (prisma as any).contactSubmission.count({ where: { status: "new" } }) : Promise.resolve(0)),
+    ("eventEnquiry" in prisma ? (prisma as Record<string, any>).eventEnquiry.count({ where: { status: "new" } }) : Promise.resolve(0)),
+    ("contactSubmission" in prisma ? (prisma as Record<string, any>).contactSubmission.count({ where: { status: "new" } }) : Promise.resolve(0)),
   ]);
 
   const totalRevenue = bookingRevenue._sum.amount ?? 0;
