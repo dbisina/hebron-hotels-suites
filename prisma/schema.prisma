@@ -1,0 +1,200 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+}
+
+model Room {
+  id           String          @id @default(cuid())
+  slug         String          @unique
+  name         String
+  description  String
+  size         String
+  occupancy    String
+  image        String
+  amenities    String
+  pricePerNight Float          @default(0)
+  featured     Boolean         @default(false)
+  order        Int             @default(0)
+  active       Boolean         @default(true)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @default(now()) @updatedAt
+  inventory    RoomInventory[]
+}
+
+model RoomInventory {
+  id         String    @id @default(cuid())
+  roomNumber String    @unique
+  floor      Int       @default(1)
+  notes      String    @default("")
+  active     Boolean   @default(true)
+  roomId     String
+  room       Room      @relation(fields: [roomId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now()) @updatedAt
+  bookings   Booking[]
+}
+
+model Booking {
+  id              String        @id @default(cuid())
+  bookingRef      String        @unique
+  inventoryId     String
+  inventory       RoomInventory @relation(fields: [inventoryId], references: [id])
+  checkIn         String
+  checkOut        String
+  nights          Int
+  guests          Int
+  guestName       String
+  guestEmail      String
+  guestPhone      String        @default("")
+  amount          Float
+  currency        String        @default("NGN")
+  discountCode    String        @default("")
+  discountAmount  Float         @default(0)
+  paystackRef     String        @default("")
+  paystackStatus  String        @default("pending")
+  status          String        @default("pending")
+  customerId      String?
+  customer        Customer?     @relation(fields: [customerId], references: [id])
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @default(now()) @updatedAt
+}
+
+model Customer {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  phone         String    @default("")
+  totalBookings Int       @default(0)
+  totalSpent    Float     @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
+  bookings      Booking[]
+}
+
+model DiscountCode {
+  id        String    @id @default(cuid())
+  code      String    @unique
+  type      String    @default("percentage")
+  value     Float
+  maxUses   Int       @default(0)
+  usedCount Int       @default(0)
+  minAmount Float     @default(0)
+  expiresAt DateTime?
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  src       String   @unique
+  alt       String
+  category  String   @default("general")
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Package {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  highlight   String
+  image       String   @default("")
+  includes    String
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  type        String
+  description String
+  image       String   @default("")
+  active      Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model Enquiry {
+  id        String   @id @default(cuid())
+  checkIn   String
+  checkOut  String
+  guests    Int
+  name      String   @default("")
+  email     String   @default("")
+  phone     String   @default("")
+  message   String   @default("")
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+// CMS key-value store (JSON blobs)
+model SiteContent {
+  id        String   @id
+  data      String
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+// Uploaded site assets (logo, section images, etc.)
+model SiteAsset {
+  id        String   @id
+  url       String
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model EventEnquiry {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String   @default("")
+  eventType   String
+  eventDate   String   @default("")
+  guestCount  String   @default("")
+  message     String   @default("")
+  status      String   @default("new")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String   @default("")
+  subject   String   @default("")
+  message   String
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model SiteSettings {
+  id        String   @id @default("default")
+  phone     String   @default("+2347071259011")
+  email     String   @default("adebisiruthadegoke@gmail.com")
+  address   String   @default("Plot 12 Umuoshigo Umuanunu, Obinze Owerri, Nigeria")
+  checkIn   String   @default("12:00 PM")
+  checkOut  String   @default("10:00 AM")
+  facebook  String   @default("")
+  instagram String   @default("")
+  updatedAt DateTime @default(now()) @updatedAt
+}

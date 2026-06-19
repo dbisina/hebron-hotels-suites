@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Brand Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  /* Browns */
+  --brown-950: #0d0704;
+  --brown-900: #1a0e0a;
+  --brown-800: #2d1a0e;
+  --brown-700: #3d2312;
+  --brown-600: #4e2e18;
+
+  /* Golds */
+  --gold-300: #e8d08a;
+  --gold-400: #dcbf60;
+  --gold-500: #d4af37;
+  --gold-600: #c9a84c;
+  --gold-700: #a8873d;
+
+  /* Creams */
+  --cream-50:  #fdfaf4;
+  --cream-100: #f9f1e3;
+  --cream-200: #f3e6cc;
+  --cream-300: #e9d5ac;
+
+  /* Neutrals */
+  --stone-800: #292524;
+  --stone-700: #44403c;
+  --stone-500: #78716c;
+  --stone-300: #d6d3d1;
+
+  /* Typography scale */
+  --font-playfair:   'Playfair Display', serif;
+  --font-cormorant:  'Cormorant Garamond', serif;
+  --font-inter:      'Inter', sans-serif;
+}
+
+/* ─── Smooth Scroll ─────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Custom Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brown-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-600);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-500);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-600) var(--brown-900);
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--gold-500);
+  color: var(--brown-950);
+}
+
+::-moz-selection {
+  background-color: var(--gold-500);
+  color: var(--brown-950);
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+body {
+  background-color: var(--brown-950);
+  color: var(--cream-100);
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Utility: Gold Gradient Text ───────────────────────────────────────────── */
+.gold-text {
+  background: linear-gradient(
+    135deg,
+    var(--gold-300) 0%,
+    var(--gold-500) 45%,
+    var(--gold-600) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ─── Utility: Section Padding ──────────────────────────────────────────────── */
+.section-padding {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+/* ─── Utility: Gold Border Gradient ─────────────────────────────────────────── */
+.gold-border {
+  border-color: var(--gold-600);
+}
+
+/* ─── Utility: Subtle Text Shadow for headings ──────────────────────────────── */
+.heading-shadow {
+  text-shadow: 0 2px 40px rgba(212, 175, 55, 0.15);
+}
+
+/* ─── Lenis smooth-scroll compatibility ─────────────────────────────────────── */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
