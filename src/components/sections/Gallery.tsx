@@ -42,7 +42,7 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
     <section
       ref={sectionRef}
       id="gallery"
-      className="bg-[#0D0704] py-24 overflow-hidden"
+      className="bg-[#FDFAF4] py-24 overflow-hidden"
     >
       <div className="max-w-screen-xl mx-auto px-6 md:px-16">
         {/* Header */}
@@ -58,7 +58,7 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
               <SectionLabel className="text-gold-600">{eyebrow}</SectionLabel>
             </motion.div>
             <h2
-              className="font-display text-cream-100 leading-[0.9] tracking-[-0.02em]"
+              className="font-display text-[#1A0E0A] leading-[0.9] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)", fontWeight: 300 }}
             >
               {headline.split("\n").map((line: string, i: number) => (
@@ -87,8 +87,8 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
                 style={{
                   borderRadius: 99,
                   border: "1px solid",
-                  borderColor: activeFilter === cat ? "rgba(201,168,76,0.7)" : "rgba(255,255,255,0.1)",
-                  color: activeFilter === cat ? "#C9A84C" : "rgba(255,255,255,0.35)",
+                  borderColor: activeFilter === cat ? "rgba(201,168,76,0.7)" : "rgba(26,14,10,0.12)",
+                  color: activeFilter === cat ? "#C9A84C" : "rgba(26,14,10,0.35)",
                   background: activeFilter === cat ? "rgba(201,168,76,0.06)" : "transparent",
                 }}
               >
@@ -100,7 +100,7 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
 
         {/* Masonry grid */}
         {visible.length === 0 ? (
-          <div className="text-center py-20 text-white/20 text-sm">No images in this category.</div>
+          <div className="text-center py-20 text-[#1A0E0A]/20 text-sm">No images in this category.</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] lg:grid-cols-[2fr_1fr_1fr] gap-1.5">
             {/* Hero cell — full height left column */}
@@ -166,11 +166,11 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <span className="text-white/20 text-[10px] tracking-[0.25em] uppercase font-sans">
+          <span className="text-[#1A0E0A]/25 text-[10px] tracking-[0.25em] uppercase font-sans">
             Hebron Hotels &amp; Suites, Owerri, Nigeria
           </span>
-          <div className="h-px flex-1 mx-8 bg-white/5" />
-          <span className="text-white/20 text-[10px] tracking-[0.25em] uppercase font-sans">
+          <div className="h-px flex-1 mx-8 bg-[rgba(26,14,10,0.06)]" />
+          <span className="text-[#1A0E0A]/25 text-[10px] tracking-[0.25em] uppercase font-sans">
             {visible.length} of {allImages.length}
           </span>
         </motion.div>

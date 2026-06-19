@@ -70,7 +70,7 @@ function RoomPanel({ room }: { room: Room }) {
       </div>
 
       {/* Details row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-gold-800/20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-[rgba(26,14,10,0.08)]">
         {/* Left: info */}
         <div className="px-4 sm:px-8 md:px-16 py-8 md:py-12">
           {/* Size + Occupancy */}
@@ -81,23 +81,23 @@ function RoomPanel({ room }: { room: Room }) {
             transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
           >
             <div>
-              <p className="font-display text-gold-500 text-2xl leading-none mb-1" style={{ fontWeight: 300 }}>
+              <p className="font-display text-[#C9A84C] text-2xl leading-none mb-1" style={{ fontWeight: 300 }}>
                 {room.size}
               </p>
-              <p className="font-sans text-cream-200/40 text-[10px] tracking-[0.3em] uppercase">Room Size</p>
+              <p className="font-sans text-[#1A0E0A]/40 text-[10px] tracking-[0.3em] uppercase">Room Size</p>
             </div>
-            <div className="w-px h-8 bg-brown-700" />
+            <div className="w-px h-8 bg-[rgba(26,14,10,0.12)]" />
             <div>
-              <p className="font-display text-gold-500 text-2xl leading-none mb-1" style={{ fontWeight: 300 }}>
+              <p className="font-display text-[#C9A84C] text-2xl leading-none mb-1" style={{ fontWeight: 300 }}>
                 {room.occupancy}
               </p>
-              <p className="font-sans text-cream-200/40 text-[10px] tracking-[0.3em] uppercase">Occupancy</p>
+              <p className="font-sans text-[#1A0E0A]/40 text-[10px] tracking-[0.3em] uppercase">Occupancy</p>
             </div>
           </motion.div>
 
           {/* Description */}
           <motion.p
-            className="font-sans text-cream-200/60 text-sm leading-relaxed mb-8"
+            className="font-sans text-[#1A0E0A]/55 text-sm leading-relaxed mb-8"
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
@@ -110,12 +110,12 @@ function RoomPanel({ room }: { room: Room }) {
             {(Array.isArray(room.amenities) ? room.amenities : JSON.parse(room.amenities as string) as string[]).map((amenity: string, i: number) => (
               <motion.li
                 key={amenity}
-                className="font-sans text-xs text-cream-200/55 leading-relaxed flex items-center gap-2"
+                className="font-sans text-xs text-[#1A0E0A]/55 leading-relaxed flex items-center gap-2"
                 initial={{ opacity: 0, y: 10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.28 + i * 0.04, ease: EASE }}
               >
-                <span className="w-1 h-1 rounded-full bg-cream-200/30 shrink-0" aria-hidden="true" />
+                <span className="w-1 h-1 rounded-full bg-[rgba(26,14,10,0.25)] shrink-0" aria-hidden="true" />
                 {amenity}
               </motion.li>
             ))}
@@ -123,10 +123,11 @@ function RoomPanel({ room }: { room: Room }) {
         </div>
 
         {/* Right: CTA */}
-        <div className="px-4 sm:px-8 md:px-16 py-8 md:py-12 border-t md:border-t-0 md:border-l border-gold-800/20 flex flex-col justify-center gap-5">
+        <div className="px-4 sm:px-8 md:px-16 py-8 md:py-12 border-t md:border-t-0 md:border-l border-[rgba(26,14,10,0.08)] flex flex-col justify-center gap-5">
           <motion.a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-brown-900 border border-gold-600/40 text-cream-100 font-sans text-xs tracking-[0.25em] uppercase hover:border-gold-600/70 hover:bg-brown-800 transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-4 font-sans text-xs tracking-[0.25em] uppercase transition-all duration-300"
+            style={{ background: "#1A0E0A", color: "#F7F3EE" }}
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.45, ease: EASE }}
@@ -135,7 +136,7 @@ function RoomPanel({ room }: { room: Room }) {
           </motion.a>
           <motion.a
             href="#contact"
-            className="font-sans text-xs tracking-[0.2em] uppercase text-cream-200/40 hover:text-cream-100 transition-colors text-center"
+            className="font-sans text-xs tracking-[0.2em] uppercase text-[#1A0E0A]/35 hover:text-[#1A0E0A] transition-colors text-center"
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.52, ease: EASE }}
@@ -170,7 +171,7 @@ export function Rooms({ dbRooms, cms }: { dbRooms?: Room[] | null; cms?: RoomsCm
     <section
       id="accommodation"
       ref={sectionRef as React.RefObject<HTMLElement>}
-      className="bg-brown-950"
+      className="bg-[#FDFAF4]"
     >
       {/* Header */}
       <div className="px-4 sm:px-8 md:px-16 pt-20 md:pt-36 pb-12">
@@ -180,12 +181,12 @@ export function Rooms({ dbRooms, cms }: { dbRooms?: Room[] | null; cms?: RoomsCm
           transition={{ duration: 0.5, ease: EASE }}
           className="mb-5"
         >
-          <SectionLabel light>{eyebrow}</SectionLabel>
+          <SectionLabel>{eyebrow}</SectionLabel>
         </motion.div>
 
         {/* Headline: line-by-line clip reveal */}
         <h2
-          className="font-display text-cream-100 leading-[0.93] tracking-[-0.02em]"
+          className="font-display text-[#1A0E0A] leading-[0.93] tracking-[-0.02em]"
           style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 300 }}
         >
           {headlineLines.map((line, i) => (
@@ -221,8 +222,8 @@ export function Rooms({ dbRooms, cms }: { dbRooms?: Room[] | null; cms?: RoomsCm
             className={cn(
               "font-sans text-xs tracking-[0.25em] uppercase whitespace-nowrap pb-4 transition-colors duration-200 outline-none",
               activeIndex === i
-                ? "text-cream-100 border-b border-gold-500"
-                : "text-cream-200/40 hover:text-cream-100"
+                ? "text-[#1A0E0A] border-b border-[#C9A84C]"
+                : "text-[#1A0E0A]/30 hover:text-[#1A0E0A]"
             )}
           >
             {room.name}
