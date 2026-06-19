@@ -56,15 +56,15 @@ function PackageCard({ pkg, index, imageSrc }: { pkg: PkgData; index: number; im
       onMouseLeave={() => setHovered(false)}
       className="flex flex-col overflow-hidden"
       style={{
-        background: hovered ? "#1A0E0A" : "#140B07",
-        border: "1px solid rgba(201,168,76,0.12)",
+        background: hovered ? "#F0EBE4" : "white",
+        border: "1px solid rgba(26,14,10,0.08)",
         transition: "background 0.4s ease",
       }}
     >
       {/* Image slot */}
       <div
         className="relative overflow-hidden flex-shrink-0"
-        style={{ height: 220, background: "#0D0704" }}
+        style={{ height: 220, background: "#E8DFD0" }}
       >
         <img
           src={src}
@@ -93,13 +93,13 @@ function PackageCard({ pkg, index, imageSrc }: { pkg: PkgData; index: number; im
         />
 
         <h3
-          className="font-display text-cream-100 text-xl leading-snug mb-3"
+          className="font-display text-[#1A0E0A] text-xl leading-snug mb-3"
           style={{ fontWeight: 300 }}
         >
           {pkg.name}
         </h3>
 
-        <p className="text-cream-100/40 text-xs leading-relaxed mb-6 font-sans">
+        <p className="text-[#1A0E0A]/45 text-xs leading-relaxed mb-6 font-sans">
           {pkg.description}
         </p>
 
@@ -108,7 +108,7 @@ function PackageCard({ pkg, index, imageSrc }: { pkg: PkgData; index: number; im
           {includes.map((item) => (
             <li
               key={item}
-              className="text-[11px] font-sans text-cream-100/30 flex items-center gap-2"
+              className="text-[11px] font-sans text-[#1A0E0A]/40 flex items-center gap-2"
             >
               <span style={{ color: "rgba(201,168,76,0.5)" }}>·</span>
               {item}
@@ -156,7 +156,7 @@ export function Membership({ cms, dbPackages, packageImages }: { cms?: Membershi
   const [enquiryOpen, setEnquiryOpen] = useState(false);
 
   return (
-    <section id="membership" style={{ background: "#0D0704" }}>
+    <section id="membership" style={{ background: "#FDFAF4" }}>
       {/* ── Top split: headline + benefits ── */}
       <div className="max-w-screen-xl mx-auto px-6 md:px-16 pt-28 pb-20 grid lg:grid-cols-[55%_45%] gap-16 items-start">
         {/* Left */}
@@ -171,7 +171,7 @@ export function Membership({ cms, dbPackages, packageImages }: { cms?: Membershi
           </motion.div>
 
           <h2
-            className="font-display text-cream-100 leading-[0.9] tracking-[-0.02em] mb-8"
+            className="font-display text-[#1A0E0A] leading-[0.9] tracking-[-0.02em] mb-8"
             style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)", fontWeight: 300 }}
           >
             {membershipData.headline.split("\n").map((line: string, i: number) => (
@@ -197,7 +197,7 @@ export function Membership({ cms, dbPackages, packageImages }: { cms?: Membershi
           />
 
           <motion.p
-            className="font-sans text-cream-100/40 text-sm leading-relaxed mb-10 max-w-md"
+            className="font-sans text-[#1A0E0A]/45 text-sm leading-relaxed mb-10 max-w-md"
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
@@ -236,8 +236,8 @@ export function Membership({ cms, dbPackages, packageImages }: { cms?: Membershi
               transition={{ duration: 0.7, delay: 0.1 + i * 0.1, ease: EASE }}
               className="p-6"
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.05)",
+                background: "white",
+                border: "1px solid rgba(26,14,10,0.07)",
               }}
             >
               <div
@@ -247,12 +247,12 @@ export function Membership({ cms, dbPackages, packageImages }: { cms?: Membershi
                 {b.icon}
               </div>
               <h4
-                className="font-display text-cream-100 text-base mb-2"
+                className="font-display text-[#1A0E0A] text-base mb-2"
                 style={{ fontWeight: 400 }}
               >
                 {b.title}
               </h4>
-              <p className="text-cream-100/30 text-xs leading-relaxed font-sans">
+              <p className="text-[#1A0E0A]/40 text-xs leading-relaxed font-sans">
                 {b.description}
               </p>
             </motion.div>
@@ -277,7 +277,7 @@ export function Membership({ cms, dbPackages, packageImages }: { cms?: Membershi
         >
           <SectionLabel className="text-gold-600">{packagesContent.eyebrow}</SectionLabel>
           <h3
-            className="font-display text-cream-100 mt-4"
+            className="font-display text-[#1A0E0A] mt-4"
             style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 300 }}
           >
             {packagesContent.headline.split("\n").map((line: string, i: number) => (

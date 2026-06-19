@@ -92,7 +92,7 @@ export function Events({ cms, eventImages }: { cms?: EventsCms | null; eventImag
   const headlineLines = headline.split("\n");
 
   return (
-    <section id="events" className="bg-[#FDFAF4]">
+    <section id="events" className="bg-brown-950">
       {/* Header */}
       <div
         ref={headerRef as React.RefObject<HTMLDivElement>}
@@ -105,12 +105,12 @@ export function Events({ cms, eventImages }: { cms?: EventsCms | null; eventImag
           transition={{ duration: 0.5, ease: EASE }}
           className="mb-5"
         >
-          <SectionLabel>{eyebrow}</SectionLabel>
+          <SectionLabel light>{eyebrow}</SectionLabel>
         </motion.div>
 
         {/* Headline: line-by-line clip reveal */}
         <h2
-          className="font-display text-[#1A0E0A] leading-[0.93] tracking-[-0.02em]"
+          className="font-display text-cream-100 leading-[0.93] tracking-[-0.02em]"
           style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", fontWeight: 300 }}
         >
           {headlineLines.map((line, i) => (
@@ -148,8 +148,7 @@ export function Events({ cms, eventImages }: { cms?: EventsCms | null; eventImag
       >
         <motion.a
           href="tel:+2347071259011"
-          className="text-xs tracking-[0.3em] uppercase px-10 py-4 transition-opacity hover:opacity-80 block w-fit"
-          style={{ background: "#C9A84C", color: "#0D0704" }}
+          className="border border-gold-600/40 text-gold-400 text-xs tracking-[0.3em] uppercase px-10 py-4 hover:bg-gold-600/10 transition-colors block w-fit"
           initial={{ opacity: 0, y: 16 }}
           animate={ctaInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
