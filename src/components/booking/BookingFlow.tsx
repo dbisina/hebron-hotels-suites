@@ -187,7 +187,7 @@ export function BookingFlow() {
       {/* Paystack inline script */}
       <script src="https://js.paystack.co/v1/inline.js" async />
 
-      <div className="max-w-2xl mx-auto px-6 py-12">
+      <div className={`${step === "rooms" ? "max-w-screen-xl" : "max-w-2xl"} mx-auto px-6 py-12 transition-none`}>
         {/* Progress bar */}
         <div className="flex items-center gap-0 mb-12">
           {STEPS.filter((s) => s !== "confirm").map((s, i) => (
@@ -364,22 +364,21 @@ function RoomsStep({ loading, data, onSelect, onBack }: {
           <button onClick={onBack} className="text-[10px] tracking-[0.2em] uppercase text-[#C9A84C]">Try Different Dates</button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {data.rooms.map((r) => (
             <div
               key={r.room.id}
-              className="bg-white overflow-hidden"
+              className="bg-white overflow-hidden flex flex-col"
               style={{ border: "1px solid rgba(26,14,10,0.06)", borderRadius: 12 }}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] md:grid-cols-1">
-                <div className="bg-[#2D1A0E] overflow-hidden min-h-[160px] md:min-h-[200px]">
-                  <img src={r.room.image} alt={r.room.name} className="w-full h-full object-cover"
-                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
-                </div>
-                <div className="p-4 sm:p-5 flex flex-col justify-between">
+              <div className="bg-[#2D1A0E] overflow-hidden min-h-[180px]">
+                <img src={r.room.image} alt={r.room.name} className="w-full h-full object-cover"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+              </div>
+              <div className="p-4 flex flex-col justify-between flex-1">
                   <div>
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <h3 className="font-display text-lg sm:text-xl text-[#1A0E0A]" style={{ fontWeight: 400 }}>
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <h3 className="font-display text-base text-[#1A0E0A]" style={{ fontWeight: 400 }}>
                         {r.room.name}
                       </h3>
                       {r.room.featured && (
@@ -398,9 +397,9 @@ function RoomsStep({ loading, data, onSelect, onBack }: {
                       <span>{r.available} room{r.available !== 1 ? "s" : ""} left</span>
                     </div>
                   </div>
-                  <div className="flex items-end justify-between gap-3 mt-4">
+                  <div className="flex flex-col gap-2 mt-4">
                     <div className="min-w-0">
-                      <span className="font-display text-xl sm:text-2xl text-[#1A0E0A]" style={{ fontWeight: 300 }}>
+                      <span className="font-display text-lg text-[#1A0E0A]" style={{ fontWeight: 300 }}>
                         {r.room.pricePerNight > 0 ? `₦${r.room.pricePerNight.toLocaleString()}` : "Contact us"}
                       </span>
                       {r.room.pricePerNight > 0 && (
@@ -408,19 +407,18 @@ function RoomsStep({ loading, data, onSelect, onBack }: {
                       )}
                       {r.room.pricePerNight > 0 && data.nights > 1 && (
                         <div className="text-[10px] text-[#1A0E0A]/30 mt-0.5">
-                          ₦{(r.room.pricePerNight * data.nights).toLocaleString()} total ({data.nights} nights)
+                          ₦{(r.room.pricePerNight * data.nights).toLocaleString()} total
                         </div>
                       )}
                     </div>
                     <button
                       onClick={() => onSelect(r, r.inventoryIds[0])}
-                      className="px-4 sm:px-5 py-2.5 text-[10px] tracking-[0.2em] uppercase transition-colors flex-shrink-0"
+                      className="w-full py-2.5 text-[10px] tracking-[0.2em] uppercase transition-colors"
                       style={{ background: "#1A0E0A", color: "#F9F1E3", borderRadius: 6 }}
                     >
                       Select
                     </button>
                   </div>
-                </div>
               </div>
             </div>
           ))}
