@@ -86,10 +86,10 @@ export function EventEnquiryTable({ initial }: { initial: Enquiry[] }) {
             >
               {[
                 ["Email", item.email],
-                ["Phone", item.phone || "—"],
+                ["Phone", item.phone || "-"],
                 ["Event Type", item.eventType],
-                ["Event Date", item.eventDate || "—"],
-                ["Guest Count", item.guestCount || "—"],
+                ["Event Date", item.eventDate || "-"],
+                ["Guest Count", item.guestCount || "-"],
               ].map(([label, value]) => (
                 <div key={label}>
                   <p className="text-[8px] tracking-[0.2em] uppercase text-[#1A0E0A]/30 mb-0.5">{label}</p>

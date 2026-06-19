@@ -127,7 +127,7 @@ export default function RefundPolicyPage() {
           Refund Policy
         </h1>
         <p className="font-sans text-cream-100/40 text-sm leading-relaxed max-w-lg mb-4">
-          Hebron Hotels and Suites Owerri — Home of Comfort and Relaxation
+          Hebron Hotels and Suites Owerri: Home of Comfort and Relaxation
         </p>
         <div
           className="h-px mt-10"

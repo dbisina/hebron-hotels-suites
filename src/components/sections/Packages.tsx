@@ -43,7 +43,7 @@ function PackageCard({ pkg, index }: PackageCardProps) {
       <ul className="flex flex-col gap-2 flex-1">
         {pkg.includes.map((item) => (
           <li key={item} className="font-sans text-xs text-brown-700/60">
-            <span className="mr-2 text-brown-700/40">—</span>
+            <span className="mr-2 text-brown-700/40">·</span>
             {item}
           </li>
         ))}

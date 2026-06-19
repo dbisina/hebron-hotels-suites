@@ -84,8 +84,8 @@ export function ContactTable({ initial }: { initial: Submission[] }) {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
                   ["Email", item.email],
-                  ["Phone", item.phone || "—"],
-                  ["Subject", item.subject || "—"],
+                  ["Phone", item.phone || "-"],
+                  ["Subject", item.subject || "-"],
                 ].map(([label, value]) => (
                   <div key={label}>
                     <p className="text-[8px] tracking-[0.2em] uppercase text-[#1A0E0A]/30 mb-0.5">{label}</p>

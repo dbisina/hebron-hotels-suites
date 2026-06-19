@@ -16,7 +16,7 @@ const BENEFITS = [
   },
   {
     title: "Complimentary Upgrades",
-    description: "Room upgrades whenever availability permits — automatically applied.",
+    description: "Room upgrades whenever availability permits, automatically applied.",
     icon: "⬡",
   },
   {
@@ -110,7 +110,7 @@ function PackageCard({ pkg, index, imageSrc }: { pkg: PkgData; index: number; im
               key={item}
               className="text-[11px] font-sans text-cream-100/30 flex items-center gap-2"
             >
-              <span style={{ color: "rgba(201,168,76,0.5)" }}>—</span>
+              <span style={{ color: "rgba(201,168,76,0.5)" }}>·</span>
               {item}
             </li>
           ))}

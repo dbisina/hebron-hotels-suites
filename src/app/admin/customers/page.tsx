@@ -115,7 +115,7 @@ export default function CustomersPage() {
                       <div className="font-medium text-[#1A0E0A]">{c.name}</div>
                       <div className="text-xs text-[#1A0E0A]/40">{c.email}</div>
                     </td>
-                    <td className={TD}>{c.phone || <span className="text-[#1A0E0A]/20">—</span>}</td>
+                    <td className={TD}>{c.phone || <span className="text-[#1A0E0A]/20">-</span>}</td>
                     <td className={TD}>
                       <span className="font-medium text-[#1A0E0A]">{c.totalBookings}</span>
                     </td>
@@ -163,7 +163,7 @@ export default function CustomersPage() {
               {[
                 ["Total Bookings", String(detail.totalBookings)],
                 ["Total Spent", `₦${detail.totalSpent.toLocaleString()}`],
-                ["Phone", detail.phone || "—"],
+                ["Phone", detail.phone || "-"],
                 ["Customer Since", new Date(detail.createdAt).toLocaleDateString()],
               ].map(([label, value]) => (
                 <div key={label} className="p-3 bg-[rgba(26,14,10,0.02)] rounded">

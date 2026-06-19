@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { BookingFlow } from "@/components/booking/BookingFlow";
 
-export const metadata = { title: "Book Your Stay — Hebron Hotels & Suites" };
+export const metadata = { title: "Book Your Stay | Hebron Hotels & Suites" };
 
 export default function BookPage() {
   return (

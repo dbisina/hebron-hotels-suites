@@ -127,7 +127,7 @@ export default function BookingsPage() {
                         <div className="text-xs text-[#1A0E0A]/40">{b.guestEmail}</div>
                       </td>
                       <td className={TD}>
-                        <div>{b.inventory?.room?.name ?? "—"}</div>
+                        <div>{b.inventory?.room?.name ?? "-"}</div>
                         <div className="text-xs text-[#1A0E0A]/40">#{b.inventory?.roomNumber}</div>
                       </td>
                       <td className={TD}>
@@ -186,8 +186,8 @@ export default function BookingsPage() {
             {[
               ["Guest", detail.guestName],
               ["Email", detail.guestEmail],
-              ["Phone", detail.guestPhone || "—"],
-              ["Room", `${detail.inventory?.room?.name} — #${detail.inventory?.roomNumber} (Floor ${detail.inventory?.floor})`],
+              ["Phone", detail.guestPhone || "-"],
+              ["Room", `${detail.inventory?.room?.name} #${detail.inventory?.roomNumber} (Floor ${detail.inventory?.floor})`],
               ["Check-in", detail.checkIn],
               ["Check-out", detail.checkOut],
               ["Nights", String(detail.nights)],
@@ -195,7 +195,7 @@ export default function BookingsPage() {
               ["Subtotal", `₦${(detail.amount + detail.discountAmount).toLocaleString()}`],
               ["Discount", detail.discountCode ? `${detail.discountCode} (−₦${detail.discountAmount.toLocaleString()})` : "None"],
               ["Total Paid", `₦${detail.amount.toLocaleString()}`],
-              ["Paystack Ref", detail.paystackRef || "—"],
+              ["Paystack Ref", detail.paystackRef || "-"],
               ["Payment Status", detail.paystackStatus],
             ].map(([label, value]) => (
               <div key={label} className="flex justify-between py-2.5 border-b border-[rgba(26,14,10,0.04)] text-sm">

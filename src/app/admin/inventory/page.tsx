@@ -147,7 +147,7 @@ export default function InventoryPage() {
                     </td>
                     <td className={TD}>{item.room.name}</td>
                     <td className={TD}>Floor {item.floor}</td>
-                    <td className={TD}>{item.notes || <span className="text-[#1A0E0A]/20">—</span>}</td>
+                    <td className={TD}>{item.notes || <span className="text-[#1A0E0A]/20">-</span>}</td>
                     <td className={TD}>
                       <button
                         onClick={() => toggle(item)}

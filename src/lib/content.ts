@@ -36,7 +36,7 @@ export const heroContent = {
 export const aboutContent = {
   eyebrow: "Our Story",
   headline: "True Luxury\nRedefined",
-  body: "With an unwavering commitment to hospitality, Hebron Hotels and Suites has elevated the travel experience for countless guests in the heart of Owerri. The hotel features state-of-the-art amenities serving both leisure and business travelers — a sanctuary where every detail whispers perfection.",
+  body: "With an unwavering commitment to hospitality, Hebron Hotels and Suites has elevated the travel experience for countless guests in the heart of Owerri. The hotel features state-of-the-art amenities serving both leisure and business travelers: a sanctuary where every detail whispers perfection.",
   quote: "An escape from reality, crafted for those who seek the extraordinary.",
   stats: [
     { value: "4", label: "Room Categories" },
@@ -187,7 +187,7 @@ export const eventsContent = {
     },
     {
       type: "Parties",
-      description: "Private celebrations curated with precision — every detail elevated.",
+      description: "Private celebrations curated with precision; every detail elevated.",
       icon: "celebration",
     },
   ],

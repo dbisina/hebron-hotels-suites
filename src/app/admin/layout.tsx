@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Admin — Hebron Hotels & Suites",
+  title: "Admin | Hebron Hotels & Suites",
   robots: { index: false, follow: false },
 };
 

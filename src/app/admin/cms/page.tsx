@@ -108,19 +108,19 @@ const FONT_OPTIONS = [
 ];
 
 const ASSET_SLOTS = [
-  { id: "logo", label: "Logo (PNG/SVG)", hint: "Displayed in nav bar — transparent background recommended" },
+  { id: "logo", label: "Logo (PNG/SVG)", hint: "Displayed in nav bar; transparent background recommended" },
   { id: "og-image", label: "Social Share Image", hint: "1200×630px recommended" },
-  { id: "about-image", label: "About — Section Photo", hint: "Left-side editorial photo in About section" },
-  { id: "facility-1", label: "Facilities — Photo 1 (Pool)", hint: "First image in facilities strip" },
-  { id: "facility-2", label: "Facilities — Photo 2 (Gym)", hint: "Second image in facilities strip" },
-  { id: "facility-3", label: "Facilities — Photo 3 (Spa)", hint: "Third image in facilities strip" },
-  { id: "facility-4", label: "Facilities — Photo 4 (Dining)", hint: "Fourth image in facilities strip" },
-  { id: "event-weddings", label: "Events — Weddings Photo", hint: "Background for the Weddings panel" },
-  { id: "event-conferences", label: "Events — Conferences Photo", hint: "Background for the Conferences panel" },
-  { id: "event-parties", label: "Events — Parties Photo", hint: "Background for the Parties panel" },
-  { id: "pkg-weekend", label: "Package — Weekend Escape", hint: "Premium Weekend Escape package image" },
-  { id: "pkg-voucher", label: "Package — Lifestyle Voucher", hint: "Exclusive Lifestyle Voucher package image" },
-  { id: "pkg-romantic", label: "Package — Romantic Getaway", hint: "Romantic Getaway package image" },
+  { id: "about-image", label: "About: Section Photo", hint: "Left-side editorial photo in About section" },
+  { id: "facility-1", label: "Facilities: Photo 1 (Pool)", hint: "First image in facilities strip" },
+  { id: "facility-2", label: "Facilities: Photo 2 (Gym)", hint: "Second image in facilities strip" },
+  { id: "facility-3", label: "Facilities: Photo 3 (Spa)", hint: "Third image in facilities strip" },
+  { id: "facility-4", label: "Facilities: Photo 4 (Dining)", hint: "Fourth image in facilities strip" },
+  { id: "event-weddings", label: "Events: Weddings Photo", hint: "Background for the Weddings panel" },
+  { id: "event-conferences", label: "Events: Conferences Photo", hint: "Background for the Conferences panel" },
+  { id: "event-parties", label: "Events: Parties Photo", hint: "Background for the Parties panel" },
+  { id: "pkg-weekend", label: "Package: Weekend Escape", hint: "Premium Weekend Escape package image" },
+  { id: "pkg-voucher", label: "Package: Lifestyle Voucher", hint: "Exclusive Lifestyle Voucher package image" },
+  { id: "pkg-romantic", label: "Package: Romantic Getaway", hint: "Romantic Getaway package image" },
 ];
 
 const LABEL = "block text-[9px] tracking-[0.25em] uppercase text-[#1A0E0A]/40 mb-1.5";
@@ -718,7 +718,7 @@ export default function CmsPage() {
                           </button>
                           {!desktopPhoto && (
                             <p className="text-[9px] text-[#1A0E0A]/25 mt-1.5">
-                              No photo set — scroll frames used as fallback
+                              No photo set; scroll frames used as fallback
                             </p>
                           )}
                         </>
@@ -788,7 +788,7 @@ export default function CmsPage() {
                           </button>
                           {!mobilePhoto && (
                             <p className="text-[9px] text-[#1A0E0A]/25 mt-1.5">
-                              No photo set — scroll frames used as fallback
+                              No photo set; scroll frames used as fallback
                             </p>
                           )}
                         </>
@@ -798,7 +798,7 @@ export default function CmsPage() {
                 )}
 
                 <p className="text-[10px] text-[#1A0E0A]/25 mt-6">
-                  Changes are saved per section. Click &ldquo;Save Changes&rdquo; to apply — preview
+                  Changes are saved per section. Click &ldquo;Save Changes&rdquo; to apply; preview
                   refreshes automatically.
                 </p>
               </div>

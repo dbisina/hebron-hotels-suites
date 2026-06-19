@@ -364,15 +364,15 @@ function RoomsStep({ loading, data, onSelect, onBack }: {
           <button onClick={onBack} className="text-[10px] tracking-[0.2em] uppercase text-[#C9A84C]">Try Different Dates</button>
         </div>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {data.rooms.map((r) => (
             <div
               key={r.room.id}
               className="bg-white overflow-hidden"
               style={{ border: "1px solid rgba(26,14,10,0.06)", borderRadius: 12 }}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr]">
-                <div className="bg-[#2D1A0E] overflow-hidden" style={{ minHeight: 160 }}>
+              <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] md:grid-cols-1">
+                <div className="bg-[#2D1A0E] overflow-hidden min-h-[160px] md:min-h-[200px]">
                   <img src={r.room.image} alt={r.room.name} className="w-full h-full object-cover"
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
                 </div>
@@ -401,7 +401,7 @@ function RoomsStep({ loading, data, onSelect, onBack }: {
                   <div className="flex items-end justify-between gap-3 mt-4">
                     <div className="min-w-0">
                       <span className="font-display text-xl sm:text-2xl text-[#1A0E0A]" style={{ fontWeight: 300 }}>
-                        ₦{r.room.pricePerNight > 0 ? r.room.pricePerNight.toLocaleString() : "—"}
+                        {r.room.pricePerNight > 0 ? `₦${r.room.pricePerNight.toLocaleString()}` : "Contact us"}
                       </span>
                       {r.room.pricePerNight > 0 && (
                         <span className="text-[10px] text-[#1A0E0A]/40 ml-1">/ night</span>
@@ -507,7 +507,7 @@ function DetailsStep({
           </div>
           {discountError && <p className="text-xs text-red-500 mt-1">{discountError}</p>}
           {discountApplied && (
-            <p className="text-xs text-green-600 mt-1">✓ Discount applied — ₦{discountAmount.toLocaleString()} off</p>
+            <p className="text-xs text-green-600 mt-1">✓ Discount applied: ₦{discountAmount.toLocaleString()} off</p>
           )}
         </div>
 

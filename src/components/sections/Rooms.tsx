@@ -123,7 +123,7 @@ function RoomPanel({ room }: { room: Room }) {
         </div>
 
         {/* Right: CTA */}
-        <div className="px-8 md:px-16 py-12 border-t md:border-t-0 md:border-l border-gold-800/20 flex flex-col justify-center gap-5">
+        <div className="px-4 sm:px-8 md:px-16 py-8 md:py-12 border-t md:border-t-0 md:border-l border-gold-800/20 flex flex-col justify-center gap-5">
           <motion.a
             href="#contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-brown-900 border border-gold-600/40 text-cream-100 font-sans text-xs tracking-[0.25em] uppercase hover:border-gold-600/70 hover:bg-brown-800 transition-all duration-300"

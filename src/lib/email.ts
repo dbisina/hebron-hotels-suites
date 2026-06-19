@@ -89,7 +89,7 @@ interface BookingData {
 }
 
 export async function sendBookingConfirmation(data: BookingData) {
-  const subject = `Booking Confirmed — ${data.bookingRef} | Hebron Hotels & Suites`;
+  const subject = `Booking Confirmed: ${data.bookingRef} | Hebron Hotels & Suites`;
   const html = wrap(`
     ${header("Booking Confirmation")}
     <h2 style="font-family: Georgia; font-weight: 300; font-size: 24px; color: #E8DFD0; margin: 0 0 24px;">Your stay is confirmed.</h2>
@@ -107,7 +107,7 @@ export async function sendBookingConfirmation(data: BookingData) {
 }
 
 export async function sendBookingAdminAlert(data: BookingData) {
-  const subject = `New Booking — ${data.bookingRef} | ${data.guestName}`;
+  const subject = `New Booking: ${data.bookingRef} | ${data.guestName}`;
   const html = wrap(`
     ${header("New Booking")}
     ${row("Ref", data.bookingRef)}
@@ -150,11 +150,11 @@ export async function sendEnquiryConfirmation(data: EnquiryData) {
 }
 
 export async function sendEnquiryAdminAlert(data: EnquiryData) {
-  const subject = `New Enquiry | ${data.name || "Guest"} — ${data.checkIn}`;
+  const subject = `New Enquiry | ${data.name || "Guest"}, ${data.checkIn}`;
   const html = wrap(`
     ${header("New Enquiry")}
-    ${row("Name", data.name || "—")}
-    ${row("Email", data.email || "—")}
+    ${row("Name", data.name || "N/A")}
+    ${row("Email", data.email || "N/A")}
     ${row("Check-In", data.checkIn)}
     ${row("Check-Out", data.checkOut)}
     ${row("Guests", String(data.guests))}
@@ -192,7 +192,7 @@ export async function sendEventEnquiryConfirmation(data: EventEnquiryData) {
 }
 
 export async function sendEventEnquiryAdminAlert(data: EventEnquiryData) {
-  const subject = `New Event Enquiry | ${data.eventType} — ${data.name}`;
+  const subject = `New Event Enquiry | ${data.eventType}, ${data.name}`;
   const html = wrap(`
     ${header("New Event Enquiry")}
     ${row("Name", data.name)}
@@ -231,7 +231,7 @@ export async function sendContactConfirmation(data: ContactData) {
 }
 
 export async function sendContactAdminAlert(data: ContactData) {
-  const sub = `New Message | ${data.name}${data.subject ? ` — ${data.subject}` : ""}`;
+  const sub = `New Message | ${data.name}${data.subject ? `: ${data.subject}` : ""}`;
   const html = wrap(`
     ${header("New Contact Message")}
     ${row("Name", data.name)}

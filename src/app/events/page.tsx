@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const EVENT_TYPES = [
-  { key: "Wedding", label: "Wedding & Reception", description: "Intimate ceremonies to grand celebrations — tailored to your vision." },
+  { key: "Wedding", label: "Wedding & Reception", description: "Intimate ceremonies to grand celebrations, tailored to your vision." },
   { key: "Conference", label: "Conference & Corporate", description: "State-of-the-art facilities for meetings, summits, and business events." },
   { key: "Birthday", label: "Birthday & Milestone", description: "Make every milestone unforgettable with curated dining and celebration packages." },
   { key: "Social", label: "Social Gathering", description: "Cocktail evenings, dinner parties, and exclusive social occasions." },

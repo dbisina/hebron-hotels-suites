@@ -167,7 +167,7 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <span className="text-white/20 text-[10px] tracking-[0.25em] uppercase font-sans">
-            Hebron Hotels &amp; Suites — Owerri, Nigeria
+            Hebron Hotels &amp; Suites, Owerri, Nigeria
           </span>
           <div className="h-px flex-1 mx-8 bg-white/5" />
           <span className="text-white/20 text-[10px] tracking-[0.25em] uppercase font-sans">
