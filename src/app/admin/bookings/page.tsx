@@ -41,7 +41,7 @@ export default function BookingsPage() {
 
   async function load() {
     setLoading(true);
-    const data = await fetch("/api/bookings").then((r) => r.json()) as Booking[] | { error: string };
+    const data = await fetch("/api/bookings").then((r) => r.ok ? r.json() : []).catch(() => []) as Booking[] | { error: string };
     setBookings(Array.isArray(data) ? data : []);
     setLoading(false);
   }

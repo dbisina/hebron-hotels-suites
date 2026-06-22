@@ -43,7 +43,7 @@ interface PkgData {
 
 function PackageCard({ pkg, index, imageSrc }: { pkg: PkgData; index: number; imageSrc?: string }) {
   const [hovered, setHovered] = useState(false);
-  const includes = Array.isArray(pkg.includes) ? pkg.includes : JSON.parse(pkg.includes as string) as string[];
+  const includes: string[] = Array.isArray(pkg.includes) ? pkg.includes : (() => { try { const p = JSON.parse(pkg.includes as string); return Array.isArray(p) ? p : []; } catch { return []; } })();
   const src = imageSrc || pkg.image || `/images/packages/${pkg.name.toLowerCase().replace(/\s+/g, "-")}.jpg`;
 
   return (

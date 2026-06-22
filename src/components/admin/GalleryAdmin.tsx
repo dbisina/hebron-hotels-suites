@@ -23,14 +23,16 @@ export function GalleryAdmin({ images: initial }: { images: GalleryImage[] }) {
     const fd = new FormData();
     fd.append("file", file);
     const res = await fetch("/api/upload", { method: "POST", body: fd });
-    const { url } = await res.json();
+    if (!res.ok) { setUploading(false); return; }
+    const { url } = await res.json() as { url: string };
 
     const addRes = await fetch("/api/gallery", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ src: url, alt: newAlt || file.name, category: newCat, order: images.length }),
     });
-    const added = await addRes.json();
+    if (!addRes.ok) { setUploading(false); return; }
+    const added = await addRes.json() as { id: string; src: string; alt: string; category: string };
     setImages((prev) => [...prev, added]);
     setNewAlt("");
     setUploading(false);

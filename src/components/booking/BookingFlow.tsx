@@ -91,7 +91,9 @@ export function BookingFlow() {
     setError("");
     try {
       const res = await fetch(`/api/availability?checkIn=${ci}&checkOut=${co}&guests=${g}`);
+      if (!res.ok) throw new Error("availability fetch failed");
       const data = await res.json() as AvailabilityData;
+      if (!Array.isArray(data?.rooms)) throw new Error("bad availability response");
       setAvailability(data);
     } catch {
       setError("Failed to load available rooms. Please try again.");

@@ -35,12 +35,12 @@ export async function verifyPaystack(reference: string): Promise<{
     `https://api.paystack.co/transaction/verify/${encodeURIComponent(reference)}`,
     { headers: { Authorization: `Bearer ${secret}` }, cache: "no-store" }
   );
-  const data = await res.json() as { status: boolean; data: { status: string; amount: number; customer: { email: string } } };
-  if (!data.status) throw new Error("Paystack verification failed");
+  const data = await res.json() as { status: boolean; data?: { status: string; amount: number; customer?: { email: string } } | null };
+  if (!data?.status || !data?.data) throw new Error("Paystack verification failed");
   return {
     status: data.data.status,
     amount: data.data.amount / 100, // kobo → naira
-    email: data.data.customer.email,
+    email: data.data.customer?.email ?? "",
   };
 }
 

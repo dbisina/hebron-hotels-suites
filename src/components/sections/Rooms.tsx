@@ -160,7 +160,7 @@ export function Rooms({ dbRooms, cms }: { dbRooms?: Room[] | null; cms?: RoomsCm
   const rooms: Room[] = (dbRooms && dbRooms.length > 0)
     ? dbRooms.map((r) => ({
         ...r,
-        amenities: (typeof r.amenities === "string" ? JSON.parse(r.amenities) : r.amenities) as string[],
+        amenities: (() => { try { return (typeof r.amenities === "string" ? JSON.parse(r.amenities) : r.amenities) as string[]; } catch { return [] as string[]; } })(),
       }))
     : (roomsContent.rooms as unknown as Room[]);
 

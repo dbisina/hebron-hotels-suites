@@ -34,7 +34,7 @@ export default function DiscountsPage() {
 
   async function load() {
     setLoading(true);
-    const data = await fetch("/api/discounts").then((r) => r.json()) as DiscountCode[];
+    const data = await fetch("/api/discounts").then((r) => r.ok ? r.json() : []).catch(() => []) as DiscountCode[];
     setCodes(Array.isArray(data) ? data : []);
     setLoading(false);
   }

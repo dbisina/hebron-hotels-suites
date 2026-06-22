@@ -73,7 +73,8 @@ export function RoomsAdmin({ rooms: initial }: { rooms: Room[] }) {
     const fd = new FormData();
     fd.append("file", file);
     const res = await fetch("/api/upload", { method: "POST", body: fd });
-    const { url } = await res.json();
+    if (!res.ok) { setUploading(false); return; }
+    const { url } = await res.json() as { url: string };
     setEditing((prev) => prev ? { ...prev, image: url } : prev);
     setUploading(false);
   }
