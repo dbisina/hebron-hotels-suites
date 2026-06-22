@@ -429,7 +429,7 @@ function RoomsStep({ loading, data, onSelect, onBack }: {
                       )}
                     </div>
                     <button
-                      onClick={() => onSelect(r, r.inventoryIds[0])}
+                      onClick={() => onSelect(r, r.inventoryIds[0] ?? "")}
                       className="w-full py-2.5 text-[10px] tracking-[0.2em] uppercase transition-colors"
                       style={{ background: "#1A0E0A", color: "#F9F1E3", borderRadius: 6 }}
                     >

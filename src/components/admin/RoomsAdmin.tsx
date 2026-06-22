@@ -144,9 +144,11 @@ export function RoomsAdmin({ rooms: initial }: { rooms: Room[] }) {
             <div className="flex gap-2">
               <button
                 onClick={() =>
-                  setEditing({
-                    ...room,
-                    amenities: JSON.parse(room.amenities || "[]").join("\n"),
+                  setEditing(() => {
+                    let parsed: unknown;
+                    try { parsed = JSON.parse(room.amenities || "[]"); } catch { parsed = []; }
+                    const arr = Array.isArray(parsed) ? parsed : [];
+                    return { ...room, amenities: arr.join("\n") };
                   })
                 }
                 className="text-xs px-3 py-1.5 transition-colors"
