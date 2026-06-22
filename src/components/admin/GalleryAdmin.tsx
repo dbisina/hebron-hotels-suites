@@ -32,7 +32,7 @@ export function GalleryAdmin({ images: initial }: { images: GalleryImage[] }) {
       body: JSON.stringify({ src: url, alt: newAlt || file.name, category: newCat, order: images.length }),
     });
     if (!addRes.ok) { setUploading(false); return; }
-    const added = await addRes.json() as { id: string; src: string; alt: string; category: string };
+    const added = await addRes.json() as { id: string; src: string; alt: string; category: string; order: number };
     setImages((prev) => [...prev, added]);
     setNewAlt("");
     setUploading(false);
