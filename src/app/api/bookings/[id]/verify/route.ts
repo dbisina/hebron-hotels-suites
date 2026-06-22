@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { verifyPaystack, upsertCustomer } from "@/lib/booking";
+import { sendBookingConfirmation, sendBookingAdminAlert } from "@/lib/email";
 
 export async function POST(
   req: NextRequest,
@@ -72,7 +73,33 @@ export async function POST(
       status: "confirmed",
       customerId,
     },
+    include: { inventory: { include: { room: true } } },
   });
+
+  void Promise.all([
+    sendBookingConfirmation({
+      bookingRef: booking.bookingRef,
+      guestName: booking.guestName,
+      guestEmail: booking.guestEmail,
+      roomName: updated.inventory?.room.name ?? "Room",
+      checkIn: booking.checkIn,
+      checkOut: booking.checkOut,
+      nights: booking.nights,
+      guests: booking.guests,
+      amount: booking.amount,
+    }),
+    sendBookingAdminAlert({
+      bookingRef: booking.bookingRef,
+      guestName: booking.guestName,
+      guestEmail: booking.guestEmail,
+      roomName: updated.inventory?.room.name ?? "Room",
+      checkIn: booking.checkIn,
+      checkOut: booking.checkOut,
+      nights: booking.nights,
+      guests: booking.guests,
+      amount: booking.amount,
+    }),
+  ]);
 
   return NextResponse.json({ ok: true, booking: updated });
 }

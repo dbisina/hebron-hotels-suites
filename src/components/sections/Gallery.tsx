@@ -42,7 +42,8 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
     <section
       ref={sectionRef}
       id="gallery"
-      className="bg-[#FDFAF4] py-24 overflow-hidden"
+      className="py-24 overflow-hidden"
+      style={{ background: "#FDFAF4" }}
     >
       <div className="max-w-screen-xl mx-auto px-6 md:px-16">
         {/* Header */}
@@ -58,8 +59,8 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
               <SectionLabel className="text-gold-600">{eyebrow}</SectionLabel>
             </motion.div>
             <h2
-              className="font-display text-[#1A0E0A] leading-[0.9] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)", fontWeight: 300 }}
+              className="font-display leading-[0.9] tracking-[-0.02em]"
+              style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)", fontWeight: 300, color: "#1A0E0A" }}
             >
               {headline.split("\n").map((line: string, i: number) => (
                 <div key={i} style={{ overflow: "hidden" }}>

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createHmac } from "crypto";
 import { prisma } from "@/lib/db";
 import { upsertCustomer } from "@/lib/booking";
+import { sendBookingConfirmation, sendBookingAdminAlert } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
 
@@ -47,6 +48,7 @@ export async function POST(req: NextRequest) {
 
   const booking = await prisma.booking.findFirst({
     where: { bookingRef: reference },
+    include: { inventory: { include: { room: true } } },
   });
 
   if (!booking) {
@@ -93,6 +95,32 @@ export async function POST(req: NextRequest) {
       ...(customerId ? { customerId } : {}),
     },
   });
+
+  const roomName = booking.inventory?.room.name ?? "Room";
+  void Promise.all([
+    sendBookingConfirmation({
+      bookingRef: booking.bookingRef,
+      guestName: booking.guestName,
+      guestEmail: booking.guestEmail,
+      roomName,
+      checkIn: booking.checkIn,
+      checkOut: booking.checkOut,
+      nights: booking.nights,
+      guests: booking.guests,
+      amount: booking.amount,
+    }),
+    sendBookingAdminAlert({
+      bookingRef: booking.bookingRef,
+      guestName: booking.guestName,
+      guestEmail: booking.guestEmail,
+      roomName,
+      checkIn: booking.checkIn,
+      checkOut: booking.checkOut,
+      nights: booking.nights,
+      guests: booking.guests,
+      amount: booking.amount,
+    }),
+  ]).catch(() => {});
 
   return NextResponse.json({ ok: true });
 }

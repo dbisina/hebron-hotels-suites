@@ -11,7 +11,7 @@ export const siteConfig = {
   checkIn: "12:00 PM",
   checkOut: "10:00 AM",
   social: {
-    facebook: "https://www.facebook.com/profile.php?id=61553201672579",
+    facebook: "https://www.facebook.com/share/1V2XBdw4zH/",
     instagram: "https://www.instagram.com/hebronhotelandsuitsowerri/",
   },
 } as const;

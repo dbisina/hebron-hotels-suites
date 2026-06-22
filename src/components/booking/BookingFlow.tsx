@@ -61,6 +61,22 @@ export function BookingFlow() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
+  function resetBooking() {
+    setStep("dates");
+    setSelectedRoom(null);
+    setSelectedInventoryId("");
+    setGuestName("");
+    setGuestEmail("");
+    setGuestPhone("");
+    setDiscountInput("");
+    setDiscountAmount(0);
+    setDiscountError("");
+    setDiscountApplied(false);
+    setBookingId("");
+    setBookingRef("");
+    setError("");
+  }
+
   // Auto-advance to rooms step if dates are pre-filled
   useEffect(() => {
     if (checkIn && checkOut && params.get("checkIn")) {
@@ -272,6 +288,7 @@ export function BookingFlow() {
             guestEmail={guestEmail}
             onPay={openPaystack}
             onBack={() => setStep("details")}
+            onCancel={resetBooking}
           />
         )}
 
@@ -546,9 +563,9 @@ function DetailsStep({
   );
 }
 
-function PaymentStep({ bookingRef, totalAmount, guestEmail, onPay, onBack }: {
+function PaymentStep({ bookingRef, totalAmount, guestEmail, onPay, onBack, onCancel }: {
   bookingRef: string; totalAmount: number; guestEmail: string;
-  onPay: () => void; onBack: () => void;
+  onPay: () => void; onBack: () => void; onCancel: () => void;
 }) {
   return (
     <div className="text-center">
@@ -579,9 +596,15 @@ function PaymentStep({ bookingRef, totalAmount, guestEmail, onPay, onBack }: {
       >
         Pay ₦{totalAmount.toLocaleString()} with Paystack
       </button>
-      <button onClick={onBack} className="text-[10px] tracking-[0.2em] uppercase text-[#1A0E0A]/30 hover:text-[#1A0E0A]/60 transition-colors">
-        ← Go Back
-      </button>
+      <div className="flex items-center justify-center gap-6">
+        <button onClick={onBack} className="text-[10px] tracking-[0.2em] uppercase text-[#1A0E0A]/30 hover:text-[#1A0E0A]/60 transition-colors">
+          ← Go Back
+        </button>
+        <span className="text-[#1A0E0A]/15 text-[10px]">|</span>
+        <button onClick={onCancel} className="text-[10px] tracking-[0.2em] uppercase text-[#1A0E0A]/20 hover:text-red-400/60 transition-colors">
+          Cancel Booking
+        </button>
+      </div>
 
       <p className="text-[10px] text-[#1A0E0A]/20 mt-6">
         Powered by Paystack · Card, bank transfer, and more accepted

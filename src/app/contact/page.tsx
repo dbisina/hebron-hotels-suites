@@ -309,7 +309,7 @@ export default function ContactPage() {
               <p className="text-[8px] tracking-[0.3em] uppercase text-cream-200/35 mb-5">Follow Us</p>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://www.facebook.com/profile.php?id=61553201672579"
+                  href="https://www.facebook.com/share/1V2XBdw4zH/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-cream-200/50 hover:text-[#C9A84C] transition-colors font-sans"

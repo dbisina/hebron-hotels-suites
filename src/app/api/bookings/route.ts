@@ -3,7 +3,6 @@ import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/auth";
 import { generateRef, getUnavailableInventoryIds, upsertCustomer } from "@/lib/booking";
 import { isRateLimited } from "@/lib/ratelimit";
-import { sendBookingConfirmation, sendBookingAdminAlert } from "@/lib/email";
 import { z } from "zod";
 
 const createSchema = z.object({
@@ -96,37 +95,6 @@ export async function POST(req: NextRequest) {
       paystackStatus: "pending",
     },
   });
-
-  // Fetch room name for email
-  const inventory = await prisma.roomInventory.findUnique({
-    where: { id: d.inventoryId },
-    include: { room: true },
-  });
-
-  void Promise.all([
-    sendBookingConfirmation({
-      bookingRef: ref,
-      guestName: d.guestName,
-      guestEmail: d.guestEmail,
-      roomName: inventory?.room.name ?? "Room",
-      checkIn: d.checkIn,
-      checkOut: d.checkOut,
-      nights: d.nights,
-      guests: d.guests,
-      amount: d.amount,
-    }),
-    sendBookingAdminAlert({
-      bookingRef: ref,
-      guestName: d.guestName,
-      guestEmail: d.guestEmail,
-      roomName: inventory?.room.name ?? "Room",
-      checkIn: d.checkIn,
-      checkOut: d.checkOut,
-      nights: d.nights,
-      guests: d.guests,
-      amount: d.amount,
-    }),
-  ]);
 
   return NextResponse.json({ ok: true, bookingRef: ref, bookingId: booking.id }, { status: 201 });
 }
