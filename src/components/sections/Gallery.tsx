@@ -63,17 +63,16 @@ export function Gallery({ images: dbImages, cms }: { images?: GalleryImage[] | n
               style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)", fontWeight: 300, color: "#1A0E0A" }}
             >
               {headline.split("\n").map((line: string, i: number) => (
-                <div key={i} style={{ overflow: "hidden" }}>
-                  <motion.span
-                    className="block"
-                    initial={{ y: "100%" }}
-                    whileInView={{ y: "0%" }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.9, delay: i * 0.1, ease: EASE }}
-                  >
-                    {i === 1 ? <em>{line}</em> : line}
-                  </motion.span>
-                </div>
+                <motion.div
+                  key={i}
+                  className="block"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }}
+                >
+                  {i === 1 ? <em>{line}</em> : line}
+                </motion.div>
               ))}
             </h2>
           </div>
